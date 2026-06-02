@@ -1,0 +1,51 @@
+﻿ <Window x:Class="NumpadFlyout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="180"
+        Height="50"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Topmost="True"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Border CornerRadius="12"
+            Background="#EE202020"
+            BorderBrush="#20FFFFFF"
+            BorderThickness="1">
+
+        <Grid Margin="14,6,12,6">
+
+            <StackPanel Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <TextBlock x:Name="StatusIcon"
+               Text="⌨️"
+               FontSize="14"
+               Foreground="White"
+               Margin="0,-7,6,0"/>
+
+                <TextBlock x:Name="StatusText"
+               Text="Numpad Enabled"
+               FontSize="14"
+               FontWeight="Medium"
+               Foreground="White"
+               Margin="0,-5,6,0"/>
+            </StackPanel>
+
+            <Rectangle x:Name="StatusBar"
+           Height="4"
+           Width="60"
+           RadiusX="2"
+           RadiusY="2"
+           Fill="#FFB900"
+           VerticalAlignment="Bottom"
+           HorizontalAlignment="Center"/>
+
+        </Grid>
+
+    </Border>
+
+</Window>

@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="NumpadFlyout/NumpadFlyout.csproj" Id="de51fa8b-7651-4509-a395-c9c5a6970342">
+    <BuildType Project="Release" />
+  </Project>
+  <Project Path="TouchpadNumpad/TouchpadNumpad.csproj">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
+</Solution>

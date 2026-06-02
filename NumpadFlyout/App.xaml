@@ -1,0 +1,7 @@
+﻿<Application x:Class="NumpadFlyout.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NumpadFlyout">
+    <Application.Resources>
+    </Application.Resources>
+</Application>
