@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\projects\\TouchpadNumpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
+      "projectUniqueName": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
       "projectName": "TouchpadNumpad",
-      "projectPath": "D:\\projects\\TouchpadNumpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
+      "projectPath": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
       "packagesPath": "C:\\Users\\aryan\\.nuget\\packages\\",
-      "outputPath": "D:\\projects\\TouchpadNumpad\\TouchpadNumpad\\obj\\",
+      "outputPath": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aryan\\AppData\\Roaming\\NuGet\\NuGet.Config",

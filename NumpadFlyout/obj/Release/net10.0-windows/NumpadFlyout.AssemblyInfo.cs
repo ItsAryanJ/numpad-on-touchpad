@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NumpadFlyout")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd24ea4f4b600cbe8d8b375ff9a524f3464aa625")]
 [assembly: System.Reflection.AssemblyProductAttribute("NumpadFlyout")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NumpadFlyout")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
