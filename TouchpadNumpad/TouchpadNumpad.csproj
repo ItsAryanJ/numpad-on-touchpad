@@ -7,6 +7,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<ApplicationIcon>assets\numpad.ico</ApplicationIcon>
+		<Company>Aryan Jain</Company>
+		<Product>TouchpadNumpad</Product>
+		<Copyright>© 2026 AryanJ</Copyright>
 	</PropertyGroup>
 
 </Project>

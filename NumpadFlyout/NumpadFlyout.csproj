@@ -6,6 +6,9 @@
 		<UseWPF>true</UseWPF>
 		<Nullable>enable</Nullable>
 		<ApplicationIcon>assets\flyout.ico</ApplicationIcon>
+		<Company>Aryan Jain</Company>
+		<Product>Flyout</Product>
+		<Copyright>© 2026 AryanJ</Copyright>
 	</PropertyGroup>
 
 </Project>

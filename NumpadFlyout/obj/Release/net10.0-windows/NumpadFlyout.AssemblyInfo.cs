@@ -11,11 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("NumpadFlyout")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Aryan Jain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
+[assembly: System.Reflection.AssemblyCopyrightAttribute("© 2026 AryanJ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd24ea4f4b600cbe8d8b375ff9a524f3464aa625")]
-[assembly: System.Reflection.AssemblyProductAttribute("NumpadFlyout")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30c1b2c817735487ec24152bbcac2e2ce5a07092")]
+[assembly: System.Reflection.AssemblyProductAttribute("Flyout")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NumpadFlyout")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]

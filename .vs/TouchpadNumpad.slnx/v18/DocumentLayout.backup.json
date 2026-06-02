@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\touchpad-numpad\\touchpadnumpad\\touchpadnumpad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\touchpadnumpad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|d:\\projects\\touchpad-numpad\\numpadflyout\\numpadflyout.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|solutionrelative:numpadflyout\\numpadflyout.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NumpadFlyout",
+              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
+              "RelativeDocumentMoniker": "NumpadFlyout\\NumpadFlyout.csproj",
+              "ToolTip": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
+              "RelativeToolTip": "NumpadFlyout\\NumpadFlyout.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-02T14:17:02.995Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "TouchpadNumpad\\TouchpadNumpad.csproj",
               "ToolTip": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
               "RelativeToolTip": "TouchpadNumpad\\TouchpadNumpad.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-06-02T13:59:12.81Z",
               "EditorCaption": ""
