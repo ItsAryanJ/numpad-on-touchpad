@@ -210,6 +210,17 @@ class Program
     [STAThread]
     static void Main()
     {
+        bool createdNew;
+        Mutex mutex = new Mutex(
+            true,
+            "TouchpadNumpad_SingleInstance",
+            out createdNew);
+
+        if (!createdNew)
+        {
+            return; 
+        }
+
         ClickBlocker.Start();
         var handler = new TouchpadHandler(0);
 

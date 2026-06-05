@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\projects\\touchpad-numpad\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\touchpad-numpad\\touchpadnumpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\touchpad-numpad\\touchpadnumpad\\touchpadnumpad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\touchpadnumpad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
@@ -18,12 +22,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NumpadFlyout",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\Program.cs",
+              "RelativeDocumentMoniker": "TouchpadNumpad\\Program.cs",
+              "ToolTip": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\Program.cs",
+              "RelativeToolTip": "TouchpadNumpad\\Program.cs",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAAAPsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-05T15:32:14.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NumpadFlyout.csproj",
               "DocumentMoniker": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
               "RelativeDocumentMoniker": "NumpadFlyout\\NumpadFlyout.csproj",
               "ToolTip": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
@@ -35,13 +52,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "TouchpadNumpad.csproj",
               "DocumentMoniker": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
               "RelativeDocumentMoniker": "TouchpadNumpad\\TouchpadNumpad.csproj",
               "ToolTip": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
               "RelativeToolTip": "TouchpadNumpad\\TouchpadNumpad.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-06-02T13:59:12.81Z",
               "EditorCaption": ""
