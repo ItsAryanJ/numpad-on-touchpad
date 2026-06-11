@@ -18,6 +18,38 @@ class Program
 
     [DllImport("user32.dll")]
     static extern short GetAsyncKeyState(int vKey);
+    
+    [DllImport("user32.dll", SetLastError = true)]
+    static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
+
+    static void SimulateNumpadKey(byte keyCode)
+    {
+        keybd_event(keyCode, 0, 0, 0);
+        keybd_event(keyCode, 0, 2, 0);
+    }
+
+    static string GetFlyoutPath()
+    {
+        string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+        string[] potentialPaths = {
+        // Path 1: Local folder
+        Path.Combine(baseDir, @"NumpadFlyout\NumpadFlyout.exe"),
+        
+        // Path 2: Development environment
+        Path.Combine(baseDir, @"..\..\..\..\NumpadFlyout\bin\Release\net10.0-windows\NumpadFlyout.exe")
+    };
+
+        foreach (string path in potentialPaths)
+        {
+            if (File.Exists(path))
+            {
+                return Path.GetFullPath(path);
+            }
+        }
+
+        return string.Empty;
+    }
     public static class ClickBlocker
     {
         private const int WH_MOUSE_LL = 14;
@@ -27,6 +59,7 @@ class Program
         private const int WM_RBUTTONUP = 0x0205;
         private const int WM_MOUSEMOVE = 0x0200;
         public static DateTime LastMouseMoveTime { get; private set; } = DateTime.MinValue;
+        public static DateTime LastTouchpadContactTime { get; set; } = DateTime.MinValue;
         private static Point _lastCursorPos;
         private static LowLevelMouseProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
@@ -85,7 +118,10 @@ class Program
                     if (msg == WM_LBUTTONDOWN || msg == WM_LBUTTONUP ||
                         msg == WM_RBUTTONDOWN || msg == WM_RBUTTONUP)
                     {
-                        return (IntPtr)1;
+                        if ((DateTime.Now - LastTouchpadContactTime).TotalMilliseconds < 300)
+                        {
+                            return (IntPtr)1;
+                        }
                     }
                 }
             }
@@ -113,16 +149,12 @@ class Program
         toggleMenuItem.Click += (_, __) =>
         {
             numpadEnabled = !numpadEnabled;
+            ClickBlocker.IsBlocking = numpadEnabled;
 
             toggleMenuItem.Text =
                 numpadEnabled ? "Disable Numpad" : "Enable Numpad";
 
-            string flyoutPath = Path.GetFullPath(
-                Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    "NumpadFlyout.exe")));
+            string flyoutPath = GetFlyoutPath();
 
             if (File.Exists(flyoutPath))
             {
@@ -218,7 +250,7 @@ class Program
 
         if (!createdNew)
         {
-            return; 
+            return;
         }
 
         ClickBlocker.Start();
@@ -232,23 +264,34 @@ class Program
 
         handler.Touched += (_, contacts) =>
         {
+            if (contacts.Length > 0)
+            {
+                ClickBlocker.LastTouchpadContactTime = DateTime.Now;
+            }
+
             if ((DateTime.Now - lastToggleTime).TotalMilliseconds > 500)
             {
                 bool ctrl = (GetAsyncKeyState(0x11) & 0x8000) != 0;
                 bool shift = (GetAsyncKeyState(0x10) & 0x8000) != 0;
-                bool alt = (GetAsyncKeyState(0x12) & 0x8000) != 0;
                 bool f12 = (GetAsyncKeyState(0x7B) & 0x8000) != 0;
 
-                if (ctrl && shift && alt && f12)
+                if (ctrl && shift && f12)
                 {
                     numpadEnabled = !numpadEnabled;
                     ClickBlocker.IsBlocking = numpadEnabled;
 
                     lastToggleTime = DateTime.Now;
-                    string flyoutPath = Path.GetFullPath(
-                    Path.Combine(
-                        AppDomain.CurrentDomain.BaseDirectory,
-                        @"..\..\..\..\NumpadFlyout\bin\Debug\net10.0-windows\NumpadFlyout.exe"));
+
+                    keybd_event(0x11, 0, 2, 0); 
+                    keybd_event(0x10, 0, 2, 0); 
+                    keybd_event(0x7B, 0, 2, 0); 
+
+                    if (toggleMenuItem != null)
+                    {
+                        toggleMenuItem.Text = numpadEnabled ? "Disable Numpad" : "Enable Numpad";
+                    }
+
+                    string flyoutPath = GetFlyoutPath();
 
                     if (File.Exists(flyoutPath))
                     {
@@ -306,17 +349,17 @@ class Program
 
             switch (key)
             {
-                case "0": SendKeys.SendWait("0"); break;
-                case "1": SendKeys.SendWait("1"); break;
-                case "2": SendKeys.SendWait("2"); break;
-                case "3": SendKeys.SendWait("3"); break;
-                case "4": SendKeys.SendWait("4"); break;
-                case "5": SendKeys.SendWait("5"); break;
-                case "6": SendKeys.SendWait("6"); break;
-                case "7": SendKeys.SendWait("7"); break;
-                case "8": SendKeys.SendWait("8"); break;
-                case "9": SendKeys.SendWait("9"); break;
-                case ".": SendKeys.SendWait("."); break;
+                case "0": SimulateNumpadKey(0x60); break;
+                case "1": SimulateNumpadKey(0x61); break;
+                case "2": SimulateNumpadKey(0x62); break;
+                case "3": SimulateNumpadKey(0x63); break;
+                case "4": SimulateNumpadKey(0x64); break;
+                case "5": SimulateNumpadKey(0x65); break;
+                case "6": SimulateNumpadKey(0x66); break;
+                case "7": SimulateNumpadKey(0x67); break;
+                case "8": SimulateNumpadKey(0x68); break;
+                case "9": SimulateNumpadKey(0x69); break;
+                case ".": SimulateNumpadKey(0x6E); break;
             }
 
             Task.Run(async () =>

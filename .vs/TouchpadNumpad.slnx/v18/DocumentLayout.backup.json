@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\touchpad-numpad\\touchpadnumpad\\touchpadnumpad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\touchpadnumpad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|d:\\projects\\touchpad-numpad\\numpadflyout\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|solutionrelative:numpadflyout\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|d:\\projects\\touchpad-numpad\\numpadflyout\\numpadflyout.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|solutionrelative:numpadflyout\\numpadflyout.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|d:\\projects\\touchpad-numpad\\numpadflyout\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|solutionrelative:numpadflyout\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +22,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "NumpadFlyout\\MainWindow.xaml",
+              "ToolTip": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml",
+              "RelativeToolTip": "NumpadFlyout\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-06-11T11:18:51.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "NumpadFlyout\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml.cs",
+              "RelativeToolTip": "NumpadFlyout\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAkwHYAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T11:17:58.497Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,35 +57,9 @@
               "RelativeDocumentMoniker": "TouchpadNumpad\\Program.cs",
               "ToolTip": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\Program.cs",
               "RelativeToolTip": "TouchpadNumpad\\Program.cs",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAAAPsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0BAAAAAAAAAAAEwCUBAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T15:32:14.832Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NumpadFlyout.csproj",
-              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
-              "RelativeDocumentMoniker": "NumpadFlyout\\NumpadFlyout.csproj",
-              "ToolTip": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
-              "RelativeToolTip": "NumpadFlyout\\NumpadFlyout.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-02T14:17:02.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TouchpadNumpad.csproj",
-              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
-              "RelativeDocumentMoniker": "TouchpadNumpad\\TouchpadNumpad.csproj",
-              "ToolTip": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
-              "RelativeToolTip": "TouchpadNumpad\\TouchpadNumpad.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-06-02T13:59:12.81Z",
+              "WhenOpened": "2026-06-11T10:16:15.593Z",
               "EditorCaption": ""
             }
           ]
