@@ -57,7 +57,7 @@ public class TouchpadHandler : IDisposable
     public event EventHandler<TouchpadContact[]>? Touched;
 
     [DllImport("user32.dll")]
-    private static extern uint GetRawInputDeviceList([Out] RAWINPUTDEVICELIST[] pRawInputDeviceList, ref uint puiNumDevices, uint cbSize);
+    private static extern uint GetRawInputDeviceList([Out] RAWINPUTDEVICELIST[]? pRawInputDeviceList, ref uint puiNumDevices, uint cbSize);
 
     [DllImport("user32.dll")]
     private static extern uint GetRawInputDeviceInfo(nint hDevice, uint uiCommand, nint pData, ref uint pcbSize);

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj": {}
+    "D:\\projects\\numpad-on-touchpad\\NumpadFlyout\\NumpadFlyout.csproj": {}
   },
   "projects": {
-    "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj": {
+    "D:\\projects\\numpad-on-touchpad\\NumpadFlyout\\NumpadFlyout.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
+        "projectUniqueName": "D:\\projects\\numpad-on-touchpad\\NumpadFlyout\\NumpadFlyout.csproj",
         "projectName": "NumpadFlyout",
-        "projectPath": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\NumpadFlyout.csproj",
+        "projectPath": "D:\\projects\\numpad-on-touchpad\\NumpadFlyout\\NumpadFlyout.csproj",
         "packagesPath": "C:\\Users\\aryan\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\obj\\",
+        "outputPath": "D:\\projects\\numpad-on-touchpad\\NumpadFlyout\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aryan\\AppData\\Roaming\\NuGet\\NuGet.Config",

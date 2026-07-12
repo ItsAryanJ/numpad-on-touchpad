@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj": {}
+    "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\TouchpadNumpad.csproj": {}
   },
   "projects": {
-    "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj": {
+    "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\TouchpadNumpad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
+        "projectUniqueName": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
         "projectName": "TouchpadNumpad",
-        "projectPath": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
+        "projectPath": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\TouchpadNumpad.csproj",
         "packagesPath": "C:\\Users\\aryan\\.nuget\\packages\\",
-        "outputPath": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\obj\\",
+        "outputPath": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aryan\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("© 2026 AryanJ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb3554b0577a1fe128d974179458304ec99216cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef65a6b0901d61923b0cae1dedb8dff5a9aa065f")]
 [assembly: System.Reflection.AssemblyProductAttribute("TouchpadNumpad")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TouchpadNumpad")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

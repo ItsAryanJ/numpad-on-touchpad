@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\projects\\touchpad-numpad\\",
+  "WorkspaceRootPath": "D:\\projects\\numpad-on-touchpad\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\touchpad-numpad\\touchpadnumpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\numpad-on-touchpad\\touchpadnumpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|d:\\projects\\touchpad-numpad\\numpadflyout\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|solutionrelative:numpadflyout\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\numpad-on-touchpad\\touchpadnumpad\\services\\flyoutmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\services\\flyoutmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|d:\\projects\\touchpad-numpad\\numpadflyout\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{DE51FA8B-7651-4509-A395-C9C5A6970342}|NumpadFlyout\\NumpadFlyout.csproj|solutionrelative:numpadflyout\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\numpad-on-touchpad\\touchpadnumpad\\core\\clickblocker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\core\\clickblocker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\numpad-on-touchpad\\touchpadnumpad\\touchpadhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\touchpadhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|d:\\projects\\numpad-on-touchpad\\touchpadnumpad\\services\\traymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4EED787-0841-1CF8-9E4D-8C1B2C311CC6}|TouchpadNumpad\\TouchpadNumpad.csproj|solutionrelative:touchpadnumpad\\services\\traymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,42 +30,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "NumpadFlyout\\MainWindow.xaml",
-              "ToolTip": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml",
-              "RelativeToolTip": "NumpadFlyout\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-06-11T11:18:51.521Z",
+              "DocumentIndex": 4,
+              "Title": "TrayManager.cs",
+              "DocumentMoniker": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Services\\TrayManager.cs",
+              "RelativeDocumentMoniker": "TouchpadNumpad\\Services\\TrayManager.cs",
+              "ToolTip": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Services\\TrayManager.cs",
+              "RelativeToolTip": "TouchpadNumpad\\Services\\TrayManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:50:33.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TouchpadHandler.cs",
+              "DocumentMoniker": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\TouchpadHandler.cs",
+              "RelativeDocumentMoniker": "TouchpadNumpad\\TouchpadHandler.cs",
+              "ToolTip": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\TouchpadHandler.cs",
+              "RelativeToolTip": "TouchpadNumpad\\TouchpadHandler.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAADwv1YAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T14:01:33.782Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "NumpadFlyout\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\projects\\touchpad-numpad\\NumpadFlyout\\MainWindow.xaml.cs",
-              "RelativeToolTip": "NumpadFlyout\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAkwHYAAABIAAAAAAAAAA==",
+              "Title": "FlyoutManager.cs",
+              "DocumentMoniker": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Services\\FlyoutManager.cs",
+              "RelativeDocumentMoniker": "TouchpadNumpad\\Services\\FlyoutManager.cs",
+              "ToolTip": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Services\\FlyoutManager.cs",
+              "RelativeToolTip": "TouchpadNumpad\\Services\\FlyoutManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-11T11:17:58.497Z",
+              "WhenOpened": "2026-07-12T13:50:22.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClickBlocker.cs",
+              "DocumentMoniker": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Core\\ClickBlocker.cs",
+              "RelativeDocumentMoniker": "TouchpadNumpad\\Core\\ClickBlocker.cs",
+              "ToolTip": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Core\\ClickBlocker.cs",
+              "RelativeToolTip": "TouchpadNumpad\\Core\\ClickBlocker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-12T13:42:18.994Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\Program.cs",
+              "DocumentMoniker": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Program.cs",
               "RelativeDocumentMoniker": "TouchpadNumpad\\Program.cs",
-              "ToolTip": "D:\\projects\\touchpad-numpad\\TouchpadNumpad\\Program.cs",
+              "ToolTip": "D:\\projects\\numpad-on-touchpad\\TouchpadNumpad\\Program.cs",
               "RelativeToolTip": "TouchpadNumpad\\Program.cs",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAEwCUBAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-11T10:16:15.593Z",
               "EditorCaption": ""
