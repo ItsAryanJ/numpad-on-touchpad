@@ -219,18 +219,8 @@ class Program
 
             var c = contacts[0];
 
-            int col = Math.Min(c.X * 3 / c.MaxX, 2);
-            int row = Math.Min(c.Y * 4 / c.MaxY, 3);
-
-            //    string[,] layout =
-            //    {
-            //    { "7", "8", "9" },
-            //    { "4", "5", "6" },
-            //    { "1", "2", "3" },
-            //    { "0", "0", "." }
-            //};
-
-            //string key = layout[row, col];
+            int col = Math.Min(c.X * profile.Columns / c.MaxX, profile.Columns - 1);
+            int row = Math.Min(c.Y * profile.Rows / c.MaxY, profile.Rows - 1);
 
             GridCell? cell = profile.Cells.FirstOrDefault(
                 c => c.Row == row &&
@@ -251,21 +241,6 @@ class Program
                 lastRow = -1;
                 lastCol = -1;
             }, null, 200, System.Threading.Timeout.Infinite);
-
-            //switch (key)
-            //{
-            //    case "0": SimulateNumpadKey(0x60); break;
-            //    case "1": SimulateNumpadKey(0x61); break;
-            //    case "2": SimulateNumpadKey(0x62); break;
-            //    case "3": SimulateNumpadKey(0x63); break;
-            //    case "4": SimulateNumpadKey(0x64); break;
-            //    case "5": SimulateNumpadKey(0x65); break;
-            //    case "6": SimulateNumpadKey(0x66); break;
-            //    case "7": SimulateNumpadKey(0x67); break;
-            //    case "8": SimulateNumpadKey(0x68); break;
-            //    case "9": SimulateNumpadKey(0x69); break;
-            //    case ".": SimulateNumpadKey(0x6E); break;
-            //}
 
             ActionExecutor.Execute(cell.Action);
 
