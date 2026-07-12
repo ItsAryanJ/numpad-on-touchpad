@@ -1,4 +1,0 @@
-C:\Users\aryan\source\repos\TouchpadNumpad\TouchpadNumpad\obj\Debug\net10.0\TouchpadNumpad.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\aryan\source\repos\TouchpadNumpad\TouchpadNumpad\obj\Debug\net10.0\TouchpadNumpad.AssemblyInfoInputs.cache
-C:\Users\aryan\source\repos\TouchpadNumpad\TouchpadNumpad\obj\Debug\net10.0\TouchpadNumpad.AssemblyInfo.cs
-C:\Users\aryan\source\repos\TouchpadNumpad\TouchpadNumpad\obj\Debug\net10.0\TouchpadNumpad.csproj.CoreCompileInputs.cache
