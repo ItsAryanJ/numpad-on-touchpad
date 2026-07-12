@@ -12,4 +12,9 @@
 		<Copyright>© 2026 AryanJ</Copyright>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Folder Include="Config\" />
+	  <Folder Include="Profiles\" />
+	</ItemGroup>
+
 </Project>

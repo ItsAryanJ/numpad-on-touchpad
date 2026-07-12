@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using System.IO;
 using System.Linq;
-using TouchpadNumpad.Core;
-using TouchpadNumpad.Services;
+using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
+using System.Windows.Forms;
+using TouchpadNumpad.Core;
+using TouchpadNumpad.Models;
+using TouchpadNumpad.Services;
 
 [SupportedOSPlatform("windows")]
 
@@ -143,6 +144,15 @@ class Program
         {
             return;
         }
+
+        // ===== TEST SETTINGS =====
+        SettingsManager settingsManager = new SettingsManager();
+        Settings settings = settingsManager.Load();
+
+        // ===== TEST PROFILE =====
+        ProfileManager profileManager = new ProfileManager();
+        Profile profile = profileManager.LoadProfile("Default");
+
 
         ClickBlocker.Start();
         var handler = new TouchpadHandler(0);
