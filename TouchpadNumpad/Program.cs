@@ -7,6 +7,9 @@ using System.IO;
 using System.Linq;
 using TouchpadNumpad.Core;
 using TouchpadNumpad.Services;
+using System.Runtime.Versioning;
+
+[SupportedOSPlatform("windows")]
 
 class Program
 {
@@ -29,7 +32,7 @@ class Program
         keybd_event(keyCode, 0, 0, 0);
         keybd_event(keyCode, 0, 2, 0);
     }
-    
+
     static void CreateTrayIcon()
     {
         toggleMenuItem = new ToolStripMenuItem("Enable Numpad");
@@ -262,6 +265,7 @@ class Program
         CreateTrayIcon();
 
         Application.Run();
+
         ClickBlocker.Stop();
     }
 }
