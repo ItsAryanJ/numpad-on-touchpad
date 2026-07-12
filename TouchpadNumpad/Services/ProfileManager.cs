@@ -52,13 +52,158 @@ namespace TouchpadNumpad.Services
 
         private Profile CreateDefaultProfile(string profileName)
         {
-            return new Profile
+            Profile profile = new Profile
             {
                 Name = profileName,
                 Rows = 4,
-                Columns = 3,
-                Cells = new()
+                Columns = 3
             };
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 0,
+                Column = 0,
+                Label = "7",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad7"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 0,
+                Column = 1,
+                Label = "8",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad8"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 0,
+                Column = 2,
+                Label = "9",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad9"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 1,
+                Column = 0,
+                Label = "4",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad4"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 1,
+                Column = 1,
+                Label = "5",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad5"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 1,
+                Column = 2,
+                Label = "6",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad6"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 2,
+                Column = 0,
+                Label = "1",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad1"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 2,
+                Column = 1,
+                Label = "2",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad2"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 2,
+                Column = 2,
+                Label = "3",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad3"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 3,
+                Column = 0,
+                Label = "0",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad0"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 3,
+                Column = 1,
+                Label = "0",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "NumPad0"
+                }
+            });
+
+            profile.Cells.Add(new GridCell
+            {
+                Row = 3,
+                Column = 2,
+                Label = ".",
+                Action = new CellAction
+                {
+                    Type = ActionType.KeyboardKey,
+                    Value = "Decimal"
+                }
+            });
+
+            return profile;
         }
     }
 }

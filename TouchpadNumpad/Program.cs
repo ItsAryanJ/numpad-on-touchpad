@@ -28,7 +28,7 @@ class Program
     [DllImport("user32.dll", SetLastError = true)]
     static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
-    static void SimulateNumpadKey(byte keyCode)
+    public static void SimulateNumpadKey(byte keyCode)
     {
         keybd_event(keyCode, 0, 0, 0);
         keybd_event(keyCode, 0, 2, 0);
@@ -145,14 +145,11 @@ class Program
             return;
         }
 
-        // ===== TEST SETTINGS =====
-        SettingsManager settingsManager = new SettingsManager();
+        SettingsManager settingsManager = new();
         Settings settings = settingsManager.Load();
 
-        // ===== TEST PROFILE =====
-        ProfileManager profileManager = new ProfileManager();
-        Profile profile = profileManager.LoadProfile("Default");
-
+        ProfileManager profileManager = new();
+        Profile profile = profileManager.LoadProfile(settings.ActiveProfile);
 
         ClickBlocker.Start();
         var handler = new TouchpadHandler(0);
@@ -225,15 +222,22 @@ class Program
             int col = Math.Min(c.X * 3 / c.MaxX, 2);
             int row = Math.Min(c.Y * 4 / c.MaxY, 3);
 
-            string[,] layout =
-            {
-            { "7", "8", "9" },
-            { "4", "5", "6" },
-            { "1", "2", "3" },
-            { "0", "0", "." }
-        };
+            //    string[,] layout =
+            //    {
+            //    { "7", "8", "9" },
+            //    { "4", "5", "6" },
+            //    { "1", "2", "3" },
+            //    { "0", "0", "." }
+            //};
 
-            string key = layout[row, col];
+            //string key = layout[row, col];
+
+            GridCell? cell = profile.Cells.FirstOrDefault(
+                c => c.Row == row &&
+                     c.Column == col);
+
+            if (cell == null)
+                return;
 
             if (row == lastRow && col == lastCol)
                 return;
@@ -248,20 +252,22 @@ class Program
                 lastCol = -1;
             }, null, 200, System.Threading.Timeout.Infinite);
 
-            switch (key)
-            {
-                case "0": SimulateNumpadKey(0x60); break;
-                case "1": SimulateNumpadKey(0x61); break;
-                case "2": SimulateNumpadKey(0x62); break;
-                case "3": SimulateNumpadKey(0x63); break;
-                case "4": SimulateNumpadKey(0x64); break;
-                case "5": SimulateNumpadKey(0x65); break;
-                case "6": SimulateNumpadKey(0x66); break;
-                case "7": SimulateNumpadKey(0x67); break;
-                case "8": SimulateNumpadKey(0x68); break;
-                case "9": SimulateNumpadKey(0x69); break;
-                case ".": SimulateNumpadKey(0x6E); break;
-            }
+            //switch (key)
+            //{
+            //    case "0": SimulateNumpadKey(0x60); break;
+            //    case "1": SimulateNumpadKey(0x61); break;
+            //    case "2": SimulateNumpadKey(0x62); break;
+            //    case "3": SimulateNumpadKey(0x63); break;
+            //    case "4": SimulateNumpadKey(0x64); break;
+            //    case "5": SimulateNumpadKey(0x65); break;
+            //    case "6": SimulateNumpadKey(0x66); break;
+            //    case "7": SimulateNumpadKey(0x67); break;
+            //    case "8": SimulateNumpadKey(0x68); break;
+            //    case "9": SimulateNumpadKey(0x69); break;
+            //    case ".": SimulateNumpadKey(0x6E); break;
+            //}
+
+            ActionExecutor.Execute(cell.Action);
 
             Task.Run(async () =>
             {
