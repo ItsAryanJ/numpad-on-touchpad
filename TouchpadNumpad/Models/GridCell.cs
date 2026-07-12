@@ -13,4 +13,5 @@ public class GridCell
     public string Label { get; set; } = "";
 
     public CellAction Action { get; set; } = new();
+
 }

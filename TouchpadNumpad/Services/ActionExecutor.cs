@@ -13,47 +13,47 @@ public static class ActionExecutor
         switch (action.Value)
         {
             case "NumPad0":
-                Program.SimulateNumpadKey(0x60);
+                KeyboardService.PressKey(0x60);
                 break;
 
             case "NumPad1":
-                Program.SimulateNumpadKey(0x61);
+                KeyboardService.PressKey(0x61);
                 break;
 
             case "NumPad2":
-                Program.SimulateNumpadKey(0x62);
+                KeyboardService.PressKey(0x62);
                 break;
 
             case "NumPad3":
-                Program.SimulateNumpadKey(0x63);
+                KeyboardService.PressKey(0x63);
                 break;
 
             case "NumPad4":
-                Program.SimulateNumpadKey(0x64);
+                KeyboardService.PressKey(0x64);
                 break;
 
             case "NumPad5":
-                Program.SimulateNumpadKey(0x65);
+                KeyboardService.PressKey(0x65);
                 break;
 
             case "NumPad6":
-                Program.SimulateNumpadKey(0x66);
+                KeyboardService.PressKey(0x66);
                 break;
 
             case "NumPad7":
-                Program.SimulateNumpadKey(0x67);
+                KeyboardService.PressKey(0x67);
                 break;
 
             case "NumPad8":
-                Program.SimulateNumpadKey(0x68);
+                KeyboardService.PressKey(0x68);
                 break;
 
             case "NumPad9":
-                Program.SimulateNumpadKey(0x69);
+                KeyboardService.PressKey(0x69);
                 break;
 
             case "Decimal":
-                Program.SimulateNumpadKey(0x6E);
+                KeyboardService.PressKey(0x6E);
                 break;
         }
     }

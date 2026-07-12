@@ -7,10 +7,8 @@ namespace TouchpadNumpad.Models;
 public enum ActionType
 {
     KeyboardKey,
-    Shortcut,
     Media,
-    Brightness,
-    System
+    Brightness
 }
     public class CellAction
     {

@@ -19,117 +19,36 @@ class Program
     static System.Threading.Timer? resetTimer;
     static bool numpadEnabled = false;
     static DateTime lastToggleTime = DateTime.MinValue;
-    static NotifyIcon? trayIcon;
-    static ToolStripMenuItem? toggleMenuItem;
 
     [DllImport("user32.dll")]
     static extern short GetAsyncKeyState(int vKey);
-    
-    [DllImport("user32.dll", SetLastError = true)]
-    static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
-    public static void SimulateNumpadKey(byte keyCode)
+    public static void ToggleNumpad()
     {
-        keybd_event(keyCode, 0, 0, 0);
-        keybd_event(keyCode, 0, 2, 0);
-    }
+        numpadEnabled = !numpadEnabled;
 
-    static void CreateTrayIcon()
-    {
-        toggleMenuItem = new ToolStripMenuItem("Enable Numpad");
+        ClickBlocker.IsBlocking = numpadEnabled;
+        TrayManager.UpdateToggleText(numpadEnabled);
 
-        toggleMenuItem.Click += (_, __) =>
+        lastToggleTime = DateTime.Now;
+
+        KeyboardService.KeyUp(0x11);
+        KeyboardService.KeyUp(0x10);
+        KeyboardService.KeyUp(0x7B);
+
+        string flyoutPath = FlyoutManager.GetFlyoutPath();
+
+        if (File.Exists(flyoutPath))
         {
-            numpadEnabled = !numpadEnabled;
-            ClickBlocker.IsBlocking = numpadEnabled;
-
-            toggleMenuItem.Text =
-                numpadEnabled ? "Disable Numpad" : "Enable Numpad";
-
-            string flyoutPath = FlyoutManager.GetFlyoutPath();
-
-            if (File.Exists(flyoutPath))
+            Process.Start(new ProcessStartInfo
             {
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = flyoutPath,
-                    Arguments = numpadEnabled ? "enabled" : "disabled",
-                    UseShellExecute = true
-                });
-            }
-        };
+                FileName = flyoutPath,
+                Arguments = numpadEnabled ? "enabled" : "disabled",
+                UseShellExecute = true
+            });
+        }
 
-        var exitItem = new ToolStripMenuItem("Exit");
-
-        exitItem.Click += (_, __) =>
-        {
-            trayIcon?.Dispose();
-            Application.Exit();
-        };
-
-        var menu = new ContextMenuStrip();
-        menu.Items.Add(toggleMenuItem);
-        menu.Items.Add(new ToolStripSeparator());
-        menu.Items.Add(exitItem);
-
-        string iconPath = Path.Combine(
-        AppDomain.CurrentDomain.BaseDirectory,
-        "assets",
-        "numpad.ico");
-
-        trayIcon = new NotifyIcon
-        {
-            Icon = File.Exists(iconPath)
-                ? new Icon(iconPath)
-                : SystemIcons.Application,
-            Visible = true,
-            Text = "Touchpad Numpad",
-            ContextMenuStrip = menu
-        };
     }
-    static void ShowPopup(string message)
-    {
-        Form popup = new Form();
-
-        popup.FormBorderStyle = FormBorderStyle.None;
-        popup.StartPosition = FormStartPosition.Manual;
-        popup.Size = new Size(300, 80);
-        popup.TopMost = true;
-        popup.ShowInTaskbar = false;
-        popup.BackColor = Color.FromArgb(30, 30, 30);
-        popup.Opacity = 0.9;
-
-        var screen = Screen.PrimaryScreen!.WorkingArea;
-
-        popup.Location = new Point(
-            (screen.Width - popup.Width) / 2,
-            screen.Height - popup.Height - 80
-        );
-
-        Label label = new Label();
-        label.Text = message;
-        label.Dock = DockStyle.Fill;
-        label.ForeColor = Color.White;
-        label.TextAlign = ContentAlignment.MiddleCenter;
-        label.Font = new Font("Segoe UI", 16, FontStyle.Bold);
-
-        popup.Controls.Add(label);
-
-        var timer = new System.Windows.Forms.Timer();
-        timer.Interval = 1000;
-
-        timer.Tick += (_, __) =>
-        {
-            timer.Stop();
-            popup.Close();
-            popup.Dispose();
-        };
-
-        popup.Shown += (_, __) => timer.Start();
-
-        popup.Show();
-    }
-
 
     [STAThread]
     static void Main()
@@ -152,7 +71,7 @@ class Program
         Profile profile = profileManager.LoadProfile(settings.ActiveProfile);
 
         ClickBlocker.Start();
-        var handler = new TouchpadHandler(0);
+        TouchpadHandler handler = new(0);
 
         if (!handler.IsTouchpadExists())
         {
@@ -175,32 +94,7 @@ class Program
 
                 if (ctrl && shift && f12)
                 {
-                    numpadEnabled = !numpadEnabled;
-                    ClickBlocker.IsBlocking = numpadEnabled;
-
-                    lastToggleTime = DateTime.Now;
-
-                    keybd_event(0x11, 0, 2, 0); 
-                    keybd_event(0x10, 0, 2, 0); 
-                    keybd_event(0x7B, 0, 2, 0); 
-
-                    if (toggleMenuItem != null)
-                    {
-                        toggleMenuItem.Text = numpadEnabled ? "Disable Numpad" : "Enable Numpad";
-                    }
-
-                    string flyoutPath = FlyoutManager.GetFlyoutPath();
-
-                    if (File.Exists(flyoutPath))
-                    {
-                        Process.Start(new ProcessStartInfo
-                        {
-                            FileName = flyoutPath,
-                            Arguments = numpadEnabled ? "enabled" : "disabled",
-                            UseShellExecute = true
-                        });
-                    }
-
+                    ToggleNumpad();
                 }
             }
 
@@ -253,7 +147,7 @@ class Program
 
         handler.StartCapture();
 
-        CreateTrayIcon();
+        TrayManager.CreateTrayIcon(ToggleNumpad);
 
         Application.Run();
 
