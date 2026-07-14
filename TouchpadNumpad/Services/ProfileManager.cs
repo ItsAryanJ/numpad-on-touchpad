@@ -205,5 +205,66 @@ namespace TouchpadNumpad.Services
 
             return profile;
         }
+
+        public List<string> GetProfiles()
+        {
+            string profilesPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Profiles");
+
+            if (!Directory.Exists(profilesPath))
+                Directory.CreateDirectory(profilesPath);
+
+            return Directory.GetFiles(profilesPath, "*.json")
+                            .Select(Path.GetFileNameWithoutExtension)
+                            .OrderBy(x => x)
+                            .ToList();
+        }
+        public void CreateProfile(string profileName)
+        {
+            Profile profile = CreateDefaultProfile(profileName);
+
+            SaveProfile(profile);
+        }
+
+        public void DuplicateProfile(string sourceProfile, string newProfileName)
+        {
+            Profile profile = LoadProfile(sourceProfile);
+
+            profile.Name = newProfileName;
+
+            SaveProfile(profile);
+        }
+        public void DeleteProfile(string profileName)
+        {
+            string profilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Profiles",
+                $"{profileName}.json");
+
+            if (File.Exists(profilePath))
+            {
+                File.Delete(profilePath);
+            }
+        }
+        public void RenameProfile(string oldName, string newName)
+        {
+            Profile profile = LoadProfile(oldName);
+
+            profile.Name = newName;
+
+            SaveProfile(profile);
+
+            string oldPath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Profiles",
+                $"{oldName}.json");
+
+            if (File.Exists(oldPath))
+            {
+                File.Delete(oldPath);
+            }
+        }
     }
+
 }

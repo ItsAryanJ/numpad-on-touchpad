@@ -37,6 +37,10 @@
             btnCancel = new Button();
             btnSave = new Button();
             pnlPreview = new Panel();
+            btnNewProfile = new Button();
+            btnDuplicateProfile = new Button();
+            btnDeleteProfile = new Button();
+            btnRenameProfile = new Button();
             ((System.ComponentModel.ISupportInitialize)numRows).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numColumns).BeginInit();
             SuspendLayout();
@@ -126,11 +130,55 @@
             pnlPreview.Size = new Size(343, 336);
             pnlPreview.TabIndex = 8;
             // 
+            // btnNewProfile
+            // 
+            btnNewProfile.Location = new Point(16, 292);
+            btnNewProfile.Name = "btnNewProfile";
+            btnNewProfile.Size = new Size(94, 29);
+            btnNewProfile.TabIndex = 9;
+            btnNewProfile.Text = "New";
+            btnNewProfile.UseVisualStyleBackColor = true;
+            btnNewProfile.Click += btnNewProfile_Click;
+            // 
+            // btnDuplicateProfile
+            // 
+            btnDuplicateProfile.Location = new Point(116, 292);
+            btnDuplicateProfile.Name = "btnDuplicateProfile";
+            btnDuplicateProfile.Size = new Size(94, 29);
+            btnDuplicateProfile.TabIndex = 10;
+            btnDuplicateProfile.Text = "Duplicate";
+            btnDuplicateProfile.UseVisualStyleBackColor = true;
+            btnDuplicateProfile.Click += btnDuplicateProfile_Click;
+            // 
+            // btnDeleteProfile
+            // 
+            btnDeleteProfile.Location = new Point(16, 327);
+            btnDeleteProfile.Name = "btnDeleteProfile";
+            btnDeleteProfile.Size = new Size(94, 29);
+            btnDeleteProfile.TabIndex = 11;
+            btnDeleteProfile.Text = "Delete";
+            btnDeleteProfile.UseVisualStyleBackColor = true;
+            btnDeleteProfile.Click += btnDeleteProfile_Click;
+            // 
+            // btnRenameProfile
+            // 
+            btnRenameProfile.Location = new Point(116, 327);
+            btnRenameProfile.Name = "btnRenameProfile";
+            btnRenameProfile.Size = new Size(76, 27);
+            btnRenameProfile.TabIndex = 12;
+            btnRenameProfile.Text = "Rename";
+            btnRenameProfile.UseVisualStyleBackColor = true;
+            btnRenameProfile.Click += btnRenameProfile_Click;
+            // 
             // SettingsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(682, 453);
+            Controls.Add(btnRenameProfile);
+            Controls.Add(btnDeleteProfile);
+            Controls.Add(btnDuplicateProfile);
+            Controls.Add(btnNewProfile);
             Controls.Add(pnlPreview);
             Controls.Add(btnSave);
             Controls.Add(btnCancel);
@@ -165,5 +213,9 @@
         private Button btnCancel;
         private Button btnSave;
         private Panel pnlPreview;
+        private Button btnNewProfile;
+        private Button btnDuplicateProfile;
+        private Button btnDeleteProfile;
+        private Button btnRenameProfile;
     }
 }
