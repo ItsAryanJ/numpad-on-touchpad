@@ -16,4 +16,8 @@
 	  <Folder Include="Profiles\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="System.Management" Version="10.0.10" />
+	</ItemGroup>
+
 </Project>

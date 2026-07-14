@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Windows.Forms;
+using TouchpadNumpad;
 using TouchpadNumpad.Core;
 using TouchpadNumpad.Models;
 using TouchpadNumpad.Services;
@@ -65,10 +66,10 @@ class Program
         }
 
         SettingsManager settingsManager = new();
-        Settings settings = settingsManager.Load();
+        AppState.Settings = settingsManager.Load();
 
         ProfileManager profileManager = new();
-        Profile profile = profileManager.LoadProfile(settings.ActiveProfile);
+        AppState.CurrentProfile = profileManager.LoadProfile(AppState.Settings.ActiveProfile);
 
         ClickBlocker.Start();
         TouchpadHandler handler = new(0);
@@ -113,10 +114,10 @@ class Program
 
             var c = contacts[0];
 
-            int col = Math.Min(c.X * profile.Columns / c.MaxX, profile.Columns - 1);
-            int row = Math.Min(c.Y * profile.Rows / c.MaxY, profile.Rows - 1);
+            int col = Math.Min(c.X * AppState.CurrentProfile.Columns / c.MaxX, AppState.CurrentProfile.Columns - 1);
+            int row = Math.Min(c.Y * AppState.CurrentProfile.Rows / c.MaxY, AppState.CurrentProfile.Rows - 1);
 
-            GridCell? cell = profile.Cells.FirstOrDefault(
+            GridCell? cell = AppState.CurrentProfile.Cells.FirstOrDefault(
                 c => c.Row == row &&
                      c.Column == col);
 

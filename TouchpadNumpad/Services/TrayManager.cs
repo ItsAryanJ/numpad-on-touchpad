@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
-using TouchpadNumpad.Core;
+using TouchpadNumpad.UI;
 
 namespace TouchpadNumpad.Services
 {
@@ -27,8 +27,15 @@ namespace TouchpadNumpad.Services
         {
             toggleMenuItem = new ToolStripMenuItem("Enable Numpad");
 
-
             toggleMenuItem.Click += (_, __) => toggleAction();
+
+
+            var settingsItem = new ToolStripMenuItem("Settings");
+            settingsItem.Click += (_, __) =>
+            {
+                using SettingsForm form = new();
+                form.ShowDialog();
+            };
 
             var exitItem = new ToolStripMenuItem("Exit");
 
@@ -40,6 +47,7 @@ namespace TouchpadNumpad.Services
 
             var menu = new ContextMenuStrip();
             menu.Items.Add(toggleMenuItem);
+            menu.Items.Add(settingsItem);
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(exitItem);
 

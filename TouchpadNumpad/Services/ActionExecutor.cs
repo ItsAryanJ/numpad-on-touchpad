@@ -7,53 +7,70 @@ public static class ActionExecutor
 {
     public static void Execute(CellAction action)
     {
-        if (action.Type != ActionType.KeyboardKey)
-            return;
-
-        switch (action.Value)
+        switch (action.Type)
         {
-            case "NumPad0":
-                KeyboardService.PressKey(0x60);
+            case ActionType.KeyboardKey:
+                ExecuteKeyboard(action.Value);
                 break;
 
-            case "NumPad1":
-                KeyboardService.PressKey(0x61);
+            case ActionType.Media:
+                ExecuteMedia(action.Value);
                 break;
 
-            case "NumPad2":
-                KeyboardService.PressKey(0x62);
+            case ActionType.Brightness:
+                ExecuteBrightness(action.Value);
+                break;
+        }
+    }
+
+    private static void ExecuteKeyboard(string value)
+    {
+        if (KeyDefinitions.KeyboardKeys.TryGetValue(value, out byte key))
+        {
+            KeyboardService.PressKey(key);
+        }
+    }
+
+    private static void ExecuteMedia(string value)
+    {
+        switch (value)
+        {
+            case "Volume Up":
+                MediaService.VolumeUp();
                 break;
 
-            case "NumPad3":
-                KeyboardService.PressKey(0x63);
+            case "Volume Down":
+                MediaService.VolumeDown();
                 break;
 
-            case "NumPad4":
-                KeyboardService.PressKey(0x64);
+            case "Mute":
+                MediaService.Mute();
                 break;
 
-            case "NumPad5":
-                KeyboardService.PressKey(0x65);
+            case "Play/Pause":
+                MediaService.PlayPause();
                 break;
 
-            case "NumPad6":
-                KeyboardService.PressKey(0x66);
+            case "Next Track":
+                MediaService.NextTrack();
                 break;
 
-            case "NumPad7":
-                KeyboardService.PressKey(0x67);
+            case "Previous Track":
+                MediaService.PreviousTrack();
+                break;
+        }
+    }
+
+    private static void ExecuteBrightness(string value)
+    {
+        switch (value)
+        {
+            case "Brightness Up":
+                BrightnessService.BrightnessUp();
                 break;
 
-            case "NumPad8":
-                KeyboardService.PressKey(0x68);
-                break;
-
-            case "NumPad9":
-                KeyboardService.PressKey(0x69);
-                break;
-
-            case "Decimal":
-                KeyboardService.PressKey(0x6E);
+            case "Brightness Down":
+                BrightnessService.BrightnessDown();
                 break;
         }
     }
