@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Linq;
-using TouchpadNumpad.Models;
+﻿using TouchpadNumpad.Models;
 using TouchpadNumpad.Services;
 
 
@@ -36,11 +28,20 @@ namespace TouchpadNumpad.UI
         {
             _settings = _settingsManager.Load();
             _profile = _profileManager.LoadProfile(_settings.ActiveProfile);
+
+            _settings.StartWithWindows = StartupService.IsStartupEnabled();
+            _settingsManager.Save(_settings);
+            chkStartup.Checked = _settings.StartWithWindows;
+            
             txtToggleShortcut.Text = string.Join(" + ", _settings.ToggleShortcut);
+
+            chkStartup.Checked = _settings.StartWithWindows;
+
 
             RefreshProfiles();
 
             RefreshProfileUi();
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -53,11 +54,16 @@ namespace TouchpadNumpad.UI
             _profile.Rows = (int)numRows.Value;
             _profile.Columns = (int)numColumns.Value;
 
+            _settings.StartWithWindows = chkStartup.Checked;
+            StartupService.SetStartup(_settings.StartWithWindows);
+            _settingsManager.Save(_settings);
+
             _settingsManager.Save(_settings);
             _profileManager.SaveProfile(_profile);
 
             AppState.Settings = _settings;
             AppState.CurrentProfile = _profile;
+
 
             Close();
         }

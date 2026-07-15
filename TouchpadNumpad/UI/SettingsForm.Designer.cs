@@ -43,6 +43,7 @@
             btnRenameProfile = new Button();
             txtToggleShortcut = new TextBox();
             btnChangeShortcut = new Button();
+            chkStartup = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)numRows).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numColumns).BeginInit();
             SuspendLayout();
@@ -190,6 +191,16 @@
             btnChangeShortcut.UseVisualStyleBackColor = true;
             btnChangeShortcut.Click += btnChangeShortcut_Click;
             // 
+            // chkStartup
+            // 
+            chkStartup.AutoSize = true;
+            chkStartup.Location = new Point(311, 417);
+            chkStartup.Name = "chkStartup";
+            chkStartup.Size = new Size(336, 24);
+            chkStartup.TabIndex = 15;
+            chkStartup.Text = "Start Touchpad Numpad when Windows starts";
+            chkStartup.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             AcceptButton = btnSave;
@@ -197,6 +208,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = btnCancel;
             ClientSize = new Size(682, 453);
+            Controls.Add(chkStartup);
             Controls.Add(btnChangeShortcut);
             Controls.Add(txtToggleShortcut);
             Controls.Add(btnRenameProfile);
@@ -243,5 +255,6 @@
         private Button btnRenameProfile;
         private TextBox txtToggleShortcut;
         private Button btnChangeShortcut;
+        private CheckBox chkStartup;
     }
 }

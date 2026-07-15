@@ -120,6 +120,7 @@ public static class KeyDefinitions
             "Scroll" => "Scroll Lock",
             "PrintScreen" => "Prt Sc",
             "Escape" => "Esc",
+            "Return" => "Enter",
 
             _ => value
         };
