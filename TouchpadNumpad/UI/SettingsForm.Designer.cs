@@ -192,8 +192,10 @@
             // 
             // SettingsForm
             // 
+            AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
             ClientSize = new Size(682, 453);
             Controls.Add(btnChangeShortcut);
             Controls.Add(txtToggleShortcut);

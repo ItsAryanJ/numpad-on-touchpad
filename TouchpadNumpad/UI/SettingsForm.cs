@@ -58,6 +58,8 @@ namespace TouchpadNumpad.UI
 
             AppState.Settings = _settings;
             AppState.CurrentProfile = _profile;
+
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -84,16 +84,17 @@
             // lblRules
             // 
             lblRules.AutoSize = true;
-            lblRules.Location = new Point(331, 9);
+            lblRules.Location = new Point(469, 9);
             lblRules.Name = "lblRules";
-            lblRules.Size = new Size(457, 100);
+            lblRules.Size = new Size(307, 120);
             lblRules.TabIndex = 5;
-            lblRules.Text = "Rules\r\n• 2 to 4 keys\r\n• At least one modifier (Ctrl, Shift, Alt or Win)\r\n• At least one non-modifier key\r\n• Esc, Caps Lock, Num Lock, Scroll Lock, Print Screen are not allowed";
+            lblRules.Text = "Rules\r\n• 2 to 4 keys\r\n• At least one modifier (Ctrl, Shift, Alt or Win)\r\n• At least one non-modifier key\r\n• Esc, Caps Lock, Num Lock, Scroll Lock, \r\nPrint Screen and Enter Key are not allowed";
             // 
             // RecordShortcutForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnCancel;
             ClientSize = new Size(800, 450);
             Controls.Add(lblRules);
             Controls.Add(lblError);

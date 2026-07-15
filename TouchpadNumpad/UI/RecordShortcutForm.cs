@@ -21,7 +21,8 @@ namespace TouchpadNumpad.UI
             "NumLock",
             "Scroll",       // Scroll Lock
             "PrintScreen",
-            "Escape"
+            "Escape",
+            "Return"
         };
         public RecordShortcutForm()
         {
