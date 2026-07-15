@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Collections.Generic;
+using System.Linq;
+
 namespace TouchpadNumpad.Services;
 
 public static class KeyDefinitions
 {
-    public static readonly Dictionary<string, byte> KeyboardKeys = new()
+    public static IReadOnlyDictionary<string, byte> KeyboardKeys { get; } = new Dictionary<string, byte>()
     {
         // Letters
         { "A", 0x41 }, { "B", 0x42 }, { "C", 0x43 },
@@ -43,7 +43,7 @@ public static class KeyDefinitions
         { "Multiply", 0x6A },
         { "Divide", 0x6F },
 
-        // Common
+        // Editing & Common Keys
         { "Enter", 0x0D },
         { "Tab", 0x09 },
         { "Space", 0x20 },
@@ -72,37 +72,37 @@ public static class KeyDefinitions
         { "F10", 0x79 }, { "F11", 0x7A }, { "F12", 0x7B }
     };
 
+    public static IReadOnlyDictionary<string, Action> MediaActions { get; } = new Dictionary<string, Action>
+     {
+        ["Volume Up"] = MediaService.VolumeUp,
+        ["Volume Down"] = MediaService.VolumeDown,
+        ["Mute"] = MediaService.Mute,
+        ["Play/Pause"] = MediaService.PlayPause,
+        ["Next Track"] = MediaService.NextTrack,
+        ["Previous Track"] = MediaService.PreviousTrack
+    };
+
     public static readonly string[] MediaKeys =
+        MediaActions.Keys.ToArray();
+
+    public static IReadOnlyDictionary<string, Action> BrightnessActions { get; } = new Dictionary<string, Action>
     {
-        "Volume Up",
-        "Volume Down",
-        "Mute",
-        "Play/Pause",
-        "Next Track",
-        "Previous Track"
+        ["Brightness Up"] = BrightnessService.BrightnessUp,
+        ["Brightness Down"] = BrightnessService.BrightnessDown
     };
 
     public static readonly string[] BrightnessKeys =
-    {
-        "Brightness Up",
-        "Brightness Down"
-    };
+        BrightnessActions.Keys.ToArray();
 
     public static string GetDisplayLabel(string value)
     {
+        if (value.StartsWith("NumPad"))
+        {
+            return value.Substring(6);
+        }
+
         return value switch
         {
-            "NumPad0" => "0",
-            "NumPad1" => "1",
-            "NumPad2" => "2",
-            "NumPad3" => "3",
-            "NumPad4" => "4",
-            "NumPad5" => "5",
-            "NumPad6" => "6",
-            "NumPad7" => "7",
-            "NumPad8" => "8",
-            "NumPad9" => "9",
-
             "Decimal" => ".",
             "Add" => "+",
             "Subtract" => "-",
@@ -111,8 +111,15 @@ public static class KeyDefinitions
 
             "Volume Up" => "Vol+",
             "Volume Down" => "Vol-",
+
             "Brightness Up" => "Bri+",
             "Brightness Down" => "Bri-",
+
+            "Capital" => "Caps Lock",
+            "NumLock" => "Num Lock",
+            "Scroll" => "Scroll Lock",
+            "PrintScreen" => "Prt Sc",
+            "Escape" => "Esc",
 
             _ => value
         };

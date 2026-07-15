@@ -6,13 +6,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using TouchpadNumpad.Models;
+using TouchpadNumpad.Services;
 
 
 namespace TouchpadNumpad.UI
 {
-    using TouchpadNumpad.Models;
-    using TouchpadNumpad.Services;
-
     public partial class SettingsForm : Form
     {
         private readonly SettingsManager _settingsManager = new();
@@ -25,18 +24,23 @@ namespace TouchpadNumpad.UI
         {
             InitializeComponent();
         }
+        private void RefreshProfileUi()
+        {
+            numRows.Value = _profile.Rows;
+            numColumns.Value = _profile.Columns;
+
+            DrawPreview();
+        }
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
             _settings = _settingsManager.Load();
             _profile = _profileManager.LoadProfile(_settings.ActiveProfile);
+            txtToggleShortcut.Text = string.Join(" + ", _settings.ToggleShortcut);
 
             RefreshProfiles();
 
-            numRows.Value = _profile.Rows;
-            numColumns.Value = _profile.Columns;
-
-            DrawPreview();
+            RefreshProfileUi();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -83,7 +87,7 @@ namespace TouchpadNumpad.UI
                     cell.Left = c * cellWidth;
                     cell.Top = r * cellHeight;
 
-                    GridCell? gridCell = _profile?.Cells.FirstOrDefault(x => x.Row == r && x.Column == c);
+                    GridCell? gridCell = _profile.Cells.FirstOrDefault(x => x.Row == r && x.Column == c);
 
                     cell.Text = gridCell?.Label ?? "";
                     cell.Tag = gridCell;
@@ -130,21 +134,33 @@ namespace TouchpadNumpad.UI
         {
             DrawPreview();
         }
+        private void SelectProfile(string profileName)
+        {
+            _profile = _profileManager.LoadProfile(profileName);
+
+            _settings.ActiveProfile = profileName;
+
+            _settingsManager.Save(_settings);
+
+            RefreshProfiles();
+
+            RefreshProfileUi();
+        }
+
+        private string? ValidateProfileName(string name)
+        {
+            return _profileManager
+                .GetProfiles()
+                .Any(p => p.Equals(name, StringComparison.OrdinalIgnoreCase))
+                    ? "A profile with this name already exists."
+                    : null;
+        }
 
         private void btnNewProfile_Click(object sender, EventArgs e)
         {
             using InputDialog dialog = new("New Profile", "Profile Name");
 
-            dialog.Validator = name =>
-            {
-                bool exists = _profileManager
-                    .GetProfiles()
-                    .Any(p => p.Equals(name, StringComparison.OrdinalIgnoreCase));
-
-                return exists
-                    ? "A profile with this name already exists."
-                    : null;
-            };
+            dialog.Validator = ValidateProfileName;
 
             if (dialog.ShowDialog() != DialogResult.OK)
                 return;
@@ -156,14 +172,7 @@ namespace TouchpadNumpad.UI
             _settings.ActiveProfile = profileName;
             _settingsManager.Save(_settings);
 
-            _profile = _profileManager.LoadProfile(profileName);
-
-            RefreshProfiles();
-
-            numRows.Value = _profile.Rows;
-            numColumns.Value = _profile.Columns;
-
-            DrawPreview();
+            SelectProfile(profileName);
         }
 
         private void RefreshProfiles()
@@ -196,13 +205,11 @@ namespace TouchpadNumpad.UI
 
             dialog.Validator = name =>
             {
-                bool exists = _profileManager
-                    .GetProfiles()
-                    .Any(p => p.Equals(name, StringComparison.OrdinalIgnoreCase));
+                if (name.Equals(_settings.ActiveProfile,
+                    StringComparison.OrdinalIgnoreCase))
+                    return null;
 
-                return exists
-                    ? "A profile with this name already exists."
-                    : null;
+                return ValidateProfileName(name);
             };
 
             if (dialog.ShowDialog() != DialogResult.OK)
@@ -214,17 +221,7 @@ namespace TouchpadNumpad.UI
                 _settings.ActiveProfile,
                 profileName);
 
-            _settings.ActiveProfile = profileName;
-            _settingsManager.Save(_settings);
-
-            _profile = _profileManager.LoadProfile(profileName);
-
-            RefreshProfiles();
-
-            numRows.Value = _profile.Rows;
-            numColumns.Value = _profile.Columns;
-
-            DrawPreview();
+            SelectProfile(profileName);
         }
 
         private void btnDeleteProfile_Click(object sender, EventArgs e)
@@ -251,11 +248,9 @@ namespace TouchpadNumpad.UI
             if (result != DialogResult.Yes)
                 return;
 
-            string deletedProfile = _settings.ActiveProfile;
+            int deletedIndex = profiles.IndexOf(_settings.ActiveProfile);
 
-            int deletedIndex = profiles.IndexOf(deletedProfile);
-
-            _profileManager.DeleteProfile(deletedProfile);
+            _profileManager.DeleteProfile(_settings.ActiveProfile);
 
             profiles = _profileManager.GetProfiles();
 
@@ -272,18 +267,7 @@ namespace TouchpadNumpad.UI
 
             int newIndex = Math.Min(deletedIndex, profiles.Count - 1);
 
-            _settings.ActiveProfile = profiles[newIndex];
-            _settingsManager.Save(_settings);
-
-            _profile = _profileManager.LoadProfile(_settings.ActiveProfile);
-
-            RefreshProfiles();
-            btnDeleteProfile.Enabled = cmbProfiles.Items.Count > 1;
-
-            numRows.Value = _profile.Rows;
-            numColumns.Value = _profile.Columns;
-
-            DrawPreview();
+            SelectProfile(profiles[newIndex]);
         }
 
         private void btnRenameProfile_Click(object sender, EventArgs e)
@@ -303,15 +287,7 @@ namespace TouchpadNumpad.UI
                     return null;
                 }
 
-                bool exists = _profileManager
-                    .GetProfiles()
-                    .Any(p => p.Equals(
-                        name,
-                        StringComparison.OrdinalIgnoreCase));
-
-                return exists
-                    ? "A profile with this name already exists."
-                    : null;
+                return ValidateProfileName(name);
             };
 
             if (dialog.ShowDialog() != DialogResult.OK)
@@ -323,14 +299,22 @@ namespace TouchpadNumpad.UI
                 _settings.ActiveProfile,
                 newName);
 
-            _settings.ActiveProfile = newName;
-            _settingsManager.Save(_settings);
+            SelectProfile(newName);
+        }
 
-            _profile = _profileManager.LoadProfile(newName);
+        private void btnChangeShortcut_Click(object sender, EventArgs e)
+        {
+            using RecordShortcutForm dialog = new();
 
-            RefreshProfiles();
+            if (dialog.ShowDialog() != DialogResult.OK)
+                return;
 
-            DrawPreview();
+            AppState.Settings.ToggleShortcut = dialog.Shortcut;
+
+            txtToggleShortcut.Text =
+                string.Join(" + ", dialog.Shortcut);
+
+            _settingsManager.Save(AppState.Settings);
         }
     }
 }

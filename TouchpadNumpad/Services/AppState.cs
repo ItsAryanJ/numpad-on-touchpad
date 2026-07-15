@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TouchpadNumpad.Models;
 
-namespace TouchpadNumpad
+namespace TouchpadNumpad.Services
 {
     public static class AppState
     {

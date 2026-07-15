@@ -7,222 +7,99 @@ namespace TouchpadNumpad.Services
 {
     public class ProfileManager
     {
+        private static readonly JsonSerializerOptions JsonOptions = new()
+        {
+            WriteIndented = true
+        };
+        private void EnsureProfilesFolder()
+        {
+            Directory.CreateDirectory(_profilesFolder);
+        }
+
         private readonly string _profilesFolder =
             Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Profiles");
-
-        public Profile LoadProfile(string profileName)
+        private string GetProfilePath(string profileName)
         {
-            Directory.CreateDirectory(_profilesFolder);
-
-            string profilePath = Path.Combine(
+            return Path.Combine(
                 _profilesFolder,
                 $"{profileName}.json");
+        }
+        public Profile LoadProfile(string profileName)
+        {
+            EnsureProfilesFolder();
+            string profilePath = GetProfilePath(profileName);
 
             if (!File.Exists(profilePath))
             {
-                Profile profile = CreateDefaultProfile(profileName);
-                SaveProfile(profile);
-                return profile;
+                Profile defaultProfile = CreateDefaultProfile(profileName, DefaultLayouts.Numpad);
+                SaveProfile(defaultProfile);
+                return defaultProfile;
             }
 
             string json = File.ReadAllText(profilePath);
 
-            return JsonSerializer.Deserialize<Profile>(json)!;
+            Profile? profile = JsonSerializer.Deserialize<Profile>(json);
+
+            if (profile == null)
+            {
+                throw new InvalidDataException(
+                    $"Failed to load profile '{profileName}'.");
+            }
+
+            return profile;
         }
 
         public void SaveProfile(Profile profile)
         {
-            Directory.CreateDirectory(_profilesFolder);
+            EnsureProfilesFolder();
+            string profilePath = GetProfilePath(profile.Name);
 
-            string profilePath = Path.Combine(
-                _profilesFolder,
-                $"{profile.Name}.json");
-
-            string json = JsonSerializer.Serialize(
-                profile,
-                new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
+            string json = JsonSerializer.Serialize(profile,JsonOptions);
 
             File.WriteAllText(profilePath, json);
         }
 
-        private Profile CreateDefaultProfile(string profileName)
+        private Profile CreateDefaultProfile(string profileName, (int Row, int Column, string Label, string Value)[] layout)
         {
-            Profile profile = new Profile
+            Profile profile = new()
             {
                 Name = profileName,
                 Rows = 4,
                 Columns = 3
             };
 
-            profile.Cells.Add(new GridCell
+            foreach (var cell in layout)
             {
-                Row = 0,
-                Column = 0,
-                Label = "7",
-                Action = new CellAction
+                profile.Cells.Add(new GridCell
                 {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad7"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 0,
-                Column = 1,
-                Label = "8",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad8"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 0,
-                Column = 2,
-                Label = "9",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad9"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 1,
-                Column = 0,
-                Label = "4",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad4"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 1,
-                Column = 1,
-                Label = "5",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad5"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 1,
-                Column = 2,
-                Label = "6",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad6"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 2,
-                Column = 0,
-                Label = "1",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad1"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 2,
-                Column = 1,
-                Label = "2",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad2"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 2,
-                Column = 2,
-                Label = "3",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad3"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 3,
-                Column = 0,
-                Label = "0",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad0"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 3,
-                Column = 1,
-                Label = "0",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "NumPad0"
-                }
-            });
-
-            profile.Cells.Add(new GridCell
-            {
-                Row = 3,
-                Column = 2,
-                Label = ".",
-                Action = new CellAction
-                {
-                    Type = ActionType.KeyboardKey,
-                    Value = "Decimal"
-                }
-            });
+                    Row = cell.Row,
+                    Column = cell.Column,
+                    Label = cell.Label,
+                    Action = new CellAction
+                    {
+                        Type = ActionType.KeyboardKey,
+                        Value = cell.Value
+                    }
+                });
+            }
 
             return profile;
         }
 
         public List<string> GetProfiles()
         {
-            string profilesPath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "Profiles");
+            EnsureProfilesFolder();
 
-            if (!Directory.Exists(profilesPath))
-                Directory.CreateDirectory(profilesPath);
-
-            return Directory.GetFiles(profilesPath, "*.json")
-                            .Select(Path.GetFileNameWithoutExtension)
-                            .OrderBy(x => x)
-                            .ToList();
+            return Directory.GetFiles(_profilesFolder, "*.json")
+                .Select(Path.GetFileNameWithoutExtension)
+                .OrderBy(x => x)
+                .ToList();
         }
         public void CreateProfile(string profileName)
         {
-            Profile profile = CreateDefaultProfile(profileName);
+            Profile profile = CreateDefaultProfile(profileName,DefaultLayouts.Numpad);
 
             SaveProfile(profile);
         }
@@ -237,10 +114,7 @@ namespace TouchpadNumpad.Services
         }
         public void DeleteProfile(string profileName)
         {
-            string profilePath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "Profiles",
-                $"{profileName}.json");
+            string profilePath = GetProfilePath(profileName);
 
             if (File.Exists(profilePath))
             {
@@ -255,10 +129,7 @@ namespace TouchpadNumpad.Services
 
             SaveProfile(profile);
 
-            string oldPath = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "Profiles",
-                $"{oldName}.json");
+            string oldPath = GetProfilePath(oldName);
 
             if (File.Exists(oldPath))
             {

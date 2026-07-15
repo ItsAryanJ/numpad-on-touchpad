@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TouchpadNumpad.Models;
 using System.Text.Json;
 using System.IO;
@@ -9,39 +7,68 @@ namespace TouchpadNumpad.Services
 {
     public class SettingsManager
     {
+        private static readonly JsonSerializerOptions JsonOptions = new()
+        {
+            WriteIndented = true
+        };
+
+        private void EnsureConfigFolder()
+        {
+            Directory.CreateDirectory(_configFolder);
+        }
+
+        private readonly string _configFolder =
+        Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory,
+            "Config");
+
         private readonly string _settingsPath =
         Path.Combine(
             AppDomain.CurrentDomain.BaseDirectory,
             "Config",
             "settings.json");
+
+        public SettingsManager()
+        {
+            _configFolder = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
+                "Config");
+
+            _settingsPath = Path.Combine(
+                _configFolder,
+                "settings.json");
+        }
         public Settings Load()
         {
+            EnsureConfigFolder();
+
             if (!File.Exists(_settingsPath))
             {
-                Settings settings = new Settings();
+                Settings defaultSettings = new Settings();
 
-                Save(settings);
+                Save(defaultSettings);
 
-                return settings;
+                return defaultSettings;
             }
 
             string json = File.ReadAllText(_settingsPath);
 
-            return JsonSerializer.Deserialize<Settings>(json)!;
+            Settings? settings = JsonSerializer.Deserialize<Settings>(json);
+
+            if (settings == null)
+            {
+                throw new InvalidDataException(
+                    "Failed to load settings.");
+            }
+
+            return settings;
         }
 
         public void Save(Settings settings)
         {
-            Directory.CreateDirectory(
-                Path.GetDirectoryName(_settingsPath)!);
+            EnsureConfigFolder();
 
-            string json =
-                JsonSerializer.Serialize(
-                    settings,
-                    new JsonSerializerOptions
-                    {
-                        WriteIndented = true
-                    });
+            string json = JsonSerializer.Serialize(settings,JsonOptions);
 
             File.WriteAllText(_settingsPath, json);
         }

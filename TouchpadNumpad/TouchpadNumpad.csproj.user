@@ -8,6 +8,9 @@
     <Compile Update="UI\InputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UI\RecordShortcutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UI\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -20,6 +20,10 @@ public static class ActionExecutor
             case ActionType.Brightness:
                 ExecuteBrightness(action.Value);
                 break;
+
+            default:
+                throw new NotSupportedException(
+                    $"Unsupported action type: {action.Type}");
         }
     }
 
@@ -33,45 +37,17 @@ public static class ActionExecutor
 
     private static void ExecuteMedia(string value)
     {
-        switch (value)
+        if (KeyDefinitions.MediaActions.TryGetValue(value, out var action))
         {
-            case "Volume Up":
-                MediaService.VolumeUp();
-                break;
-
-            case "Volume Down":
-                MediaService.VolumeDown();
-                break;
-
-            case "Mute":
-                MediaService.Mute();
-                break;
-
-            case "Play/Pause":
-                MediaService.PlayPause();
-                break;
-
-            case "Next Track":
-                MediaService.NextTrack();
-                break;
-
-            case "Previous Track":
-                MediaService.PreviousTrack();
-                break;
+            action();
         }
     }
 
     private static void ExecuteBrightness(string value)
     {
-        switch (value)
+        if (KeyDefinitions.BrightnessActions.TryGetValue(value, out var action))
         {
-            case "Brightness Up":
-                BrightnessService.BrightnessUp();
-                break;
-
-            case "Brightness Down":
-                BrightnessService.BrightnessDown();
-                break;
+            action();
         }
     }
 }

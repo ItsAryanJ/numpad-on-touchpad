@@ -7,17 +7,9 @@ namespace TouchpadNumpad.Services
 {
     public static class MediaService
     {
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern void keybd_event(
-        byte bVk,
-        byte bScan,
-        uint dwFlags,
-        int dwExtraInfo);
-
         private static void PressMediaKey(byte key)
         {
-            keybd_event(key, 0, 0, 0);
-            keybd_event(key, 0, 2, 0);
+            InputService.PressKey(key);
         }
 
         private const byte VK_VOLUME_MUTE = 0xAD;

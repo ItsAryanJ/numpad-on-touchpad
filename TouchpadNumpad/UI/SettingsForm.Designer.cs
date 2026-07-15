@@ -41,6 +41,8 @@
             btnDuplicateProfile = new Button();
             btnDeleteProfile = new Button();
             btnRenameProfile = new Button();
+            txtToggleShortcut = new TextBox();
+            btnChangeShortcut = new Button();
             ((System.ComponentModel.ISupportInitialize)numRows).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numColumns).BeginInit();
             SuspendLayout();
@@ -170,11 +172,31 @@
             btnRenameProfile.UseVisualStyleBackColor = true;
             btnRenameProfile.Click += btnRenameProfile_Click;
             // 
+            // txtToggleShortcut
+            // 
+            txtToggleShortcut.Location = new Point(27, 395);
+            txtToggleShortcut.Name = "txtToggleShortcut";
+            txtToggleShortcut.ReadOnly = true;
+            txtToggleShortcut.Size = new Size(125, 27);
+            txtToggleShortcut.TabIndex = 13;
+            // 
+            // btnChangeShortcut
+            // 
+            btnChangeShortcut.Location = new Point(169, 395);
+            btnChangeShortcut.Name = "btnChangeShortcut";
+            btnChangeShortcut.Size = new Size(94, 29);
+            btnChangeShortcut.TabIndex = 14;
+            btnChangeShortcut.Text = "Change";
+            btnChangeShortcut.UseVisualStyleBackColor = true;
+            btnChangeShortcut.Click += btnChangeShortcut_Click;
+            // 
             // SettingsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(682, 453);
+            Controls.Add(btnChangeShortcut);
+            Controls.Add(txtToggleShortcut);
             Controls.Add(btnRenameProfile);
             Controls.Add(btnDeleteProfile);
             Controls.Add(btnDuplicateProfile);
@@ -217,5 +239,7 @@
         private Button btnDuplicateProfile;
         private Button btnDeleteProfile;
         private Button btnRenameProfile;
+        private TextBox txtToggleShortcut;
+        private Button btnChangeShortcut;
     }
 }

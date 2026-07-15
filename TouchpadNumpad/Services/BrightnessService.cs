@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Management;
 
 namespace TouchpadNumpad.Services
 {
     public static class BrightnessService
     {
+        private const string WmiNamespace = @"\\.\root\WMI";
+        private const byte BrightnessStep = 10;
+        private const byte DefaultBrightness = 50;
         private static void ChangeBrightness(byte brightness)
         {
-            ManagementScope scope = new ManagementScope(@"\\.\root\WMI");
+            ManagementScope scope = new(WmiNamespace);
 
             using ManagementClass mclass =
                 new ManagementClass(scope, new ManagementPath("WmiMonitorBrightnessMethods"), null);
@@ -25,32 +26,31 @@ namespace TouchpadNumpad.Services
         private static byte GetBrightness()
         {
             using ManagementClass mclass =
-                new ManagementClass("root\\WMI", "WmiMonitorBrightness", null);
+                new ManagementClass(WmiNamespace,"WmiMonitorBrightness",null);
 
             foreach (ManagementObject instance in mclass.GetInstances())
-            {
-                return (byte)instance["CurrentBrightness"];
-            }
+                using (instance)
+                {
+                    return (byte)instance["CurrentBrightness"];
+                }
 
-            return 50;
+            return DefaultBrightness;
+        }
+        public static void SetBrightness(int brightness)
+        {
+            brightness = (byte)Math.Clamp(brightness, 0, 100);
+
+            ChangeBrightness((byte)brightness);
         }
 
         public static void BrightnessUp()
         {
-            byte current = GetBrightness();
-
-            current = (byte)Math.Min(current + 10, 100);
-
-            ChangeBrightness(current);
+            SetBrightness((byte)(GetBrightness() + BrightnessStep));
         }
 
         public static void BrightnessDown()
         {
-            byte current = GetBrightness();
-
-            current = (byte)Math.Max(current - 10, 0);
-
-            ChangeBrightness(current);
+            SetBrightness((byte)(GetBrightness() - BrightnessStep));
         }
 
     }

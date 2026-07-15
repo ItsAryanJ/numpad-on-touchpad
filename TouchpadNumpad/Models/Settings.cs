@@ -9,13 +9,10 @@ public class Settings
 
     public bool StartWithWindows { get; set; }
 
-    public List<string?> ToggleShortcut { get; set; }
-        = new()
+    public List<string?> ToggleShortcut { get; set; } = new()
         {
             "Ctrl",
             "Shift",
-            "F12",
-            null,
-            null
+            "F12"
         };
 }
